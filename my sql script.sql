@@ -52,7 +52,7 @@ SELECT
   u.id,
   sv.name                              AS Система,
   ch.name AS Канал,
-  CASE WHEN sv.name = 'ДомКлик' THEN
+  CASE WHEN sv.name = 'ДК' THEN
       CASE WHEN (replace(replace(ARRAY[roles]::text, '{',''), '}', '')::VARCHAR(200) ILIKE '%ROLE_POL_MARKETER%'
       OR replace(replace(ARRAY[roles]::text, '{',''), '}', '')::VARCHAR(200) ILIKE '%ROLE_POL_PARTNER_HEAD%'
     --  OR replace(replace(ARRAY[roles]::text, '{',''), '}', '')::VARCHAR(200) ILIKE '%ROLE_ABSTRACT_PARLINE_USER%'
@@ -73,8 +73,8 @@ SELECT
       ELSE (CASE WHEN cl.cas_id is null THEN 'Неавторизованные' ELSE  'ДК клиенты' END )
       END
       END as ДК,
-   CASE WHEN sv.name = 'ДомКлик' THEN
-   CASE WHEN ch.name ILIKE '%ДомКлик%' THEN 'Web'
+   CASE WHEN sv.name = 'ДК' THEN
+   CASE WHEN ch.name ILIKE '%ДК%' THEN 'Web'
           WHEN ch.name ILIKE '%Mobile Android%' THEN 'Mobile Android'
           WHEN ch.name ILIKE '%Mobile IOS%' THEN 'Mobile IOS' END
    END AS ДК_приложение
