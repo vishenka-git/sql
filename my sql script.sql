@@ -92,8 +92,8 @@ FROM rs
   LEFT JOIN contact_center.hashtag h ON h.id = t.hashtag_id
   LEFT JOIn contact_center.channel ch ON ch.id=t.channel_id
 WHERE
-rs.created_at :: DATE BETWEEN (date_trunc('week', current_date) - INTERVAL '10 weeks')::DATE AND date_trunc('week',                                                                                                             current_date)::DATE
-       AND
+rs.created_at :: DATE BETWEEN (date_trunc('week', current_date) - INTERVAL '10 weeks')::DATE AND date_trunc('week',current_date)::DATE 
+                                  AND
       sv.name in ('Парлайн','ДК','Компас','ДК ВСП', 'CRM2.0', 'МОИК', 'Eva') AND t.jira_id is null
       --AND ch.id=6
    --  AND ARRAY[roles]<>'{}'
